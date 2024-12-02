@@ -456,11 +456,11 @@ function module:New(name)
                     if clicked then
                         button.Text = desc
                         button.TextSize = 13.000
-						tween(button,TweenInfo.new(0.2,Enum.EasingStyle.Linear), {BackgroundColor3 = Color3.fromRGB(53, 53, 82)})
+						tween(button,TweenInfo.new(0.2,Enum.EasingStyle.Linear), {BackgroundColor3 = Color3.fromRGB(143, 143, 143)})
                     else 
                         button.Text = name
                         button.TextSize = 17.000
-						tween(button,TweenInfo.new(0.2,Enum.EasingStyle.Linear), {BackgroundColor3 = Color3.fromRGB(69, 69, 107)})
+						tween(button,TweenInfo.new(0.2,Enum.EasingStyle.Linear), {BackgroundColor3 = Color3.fromRGB(104, 104, 104)
 
                     end
                 end)
