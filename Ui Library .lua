@@ -271,10 +271,10 @@ function module:New(name)
 			tabbutton.AutoButtonColor = false
 
 			tabbutton.MouseEnter:Connect(function()
-				tween(tabbutton,TweenInfo.new(0.4,Enum.EasingStyle.Linear),{BackgroundColor3 = Color3.fromRGB(103, 103, 158)})
+				tween(tabbutton,TweenInfo.new(0.4,Enum.EasingStyle.Linear),{BackgroundColor3 = Color3.fromRGB(143, 143, 143)})
 			end)
 			tabbutton.MouseLeave:Connect(function()
-				tween(tabbutton,TweenInfo.new(0.4,Enum.EasingStyle.Linear),{BackgroundColor3 = Color3.fromRGB(69, 69, 107)})
+				tween(tabbutton,TweenInfo.new(0.4,Enum.EasingStyle.Linear),{BackgroundColor3 = Color3.fromRGB(104, 104, 104)})
 			end)
 
             local UICorner = Instance.new("UICorner")
