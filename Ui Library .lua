@@ -437,12 +437,12 @@ function module:New(name)
 				button.MouseButton1Down:Connect(function()
 					if clicked then return end
 					if holding == false then holding = true end
-					tween(button,TweenInfo.new(0.2,Enum.EasingStyle.Linear), {BackgroundColor3 = Color3.fromRGB(100, 100, 156)})
+					tween(button,TweenInfo.new(0.2,Enum.EasingStyle.Linear), {BackgroundColor3 = Color3.fromRGB(143, 143, 143)})
 				end)
 				button.MouseButton1Up:Connect(function()
 					if clicked then return end
 					if holding == true then holding = false end
-					tween(button,TweenInfo.new(0.2,Enum.EasingStyle.Linear), {BackgroundColor3 = Color3.fromRGB(69, 69, 107)})
+					tween(button,TweenInfo.new(0.2,Enum.EasingStyle.Linear), {BackgroundColor3 = Color3.fromRGB(104, 104, 104)})
 				end)
 
 				button.MouseLeave:Connect(function()
