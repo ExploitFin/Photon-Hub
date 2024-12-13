@@ -395,6 +395,85 @@ function module:New(name)
 				end)
             end
 
+function tab:NewAnimationButton(name, desc, animationIds, callback)
+    local button = Instance.new("TextButton")
+    local buttonCorner = Instance.new("UICorner")
+    local infoButton = Instance.new("ImageButton")
+    
+    -- Button properties
+    button.Name = name
+    button.Parent = ScrollingFrame
+    button.BackgroundColor3 = Color3.fromRGB(104, 104, 104)
+    button.Position = UDim2.new(0, 0, 0, 0)
+    button.Size = UDim2.new(0, 385, 0, 39)
+    button.Font = Enum.Font.Cartoon
+    button.Text = name
+    button.TextScaled = true
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.BackgroundTransparency = 0.2
+    button.AutoButtonColor = true
+    button.BorderSizePixel = 0
+    button.TextWrapped = true
+
+    -- Button corner radius
+    buttonCorner.CornerRadius = UDim.new(0, 7)
+    buttonCorner.Parent = button
+
+    -- Info button properties
+    infoButton.Name = "infoButton"
+    infoButton.Parent = button
+    infoButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    infoButton.BackgroundTransparency = 1
+    infoButton.Position = UDim2.new(0.02, 0, 0.2, 0)
+    infoButton.Size = UDim2.new(0, 20, 0, 21)
+    infoButton.Image = "http://www.roblox.com/asset/?id=6294110112"
+
+    -- Button click functionality
+    local activeAnimations = {}
+    button.MouseButton1Click:Connect(function()
+        local humanoid = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            local animationIdsList = type(animationIds) == "table" and animationIds or {animationIds}
+            local isActive = false
+
+            for _, animationId in ipairs(animationIdsList) do
+                if activeAnimations[animationId] then
+                    activeAnimations[animationId]:Stop()
+                    activeAnimations[animationId] = nil
+                else
+                    local anim = Instance.new("Animation")
+                    anim.AnimationId = "rbxassetid://" .. animationId
+                    local animationTrack = humanoid:LoadAnimation(anim)
+                    animationTrack.Looped = true
+                    animationTrack:Play()
+                    activeAnimations[animationId] = animationTrack
+                    isActive = true
+                end
+            end
+
+            if isActive then
+                button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+            else
+                button.BackgroundColor3 = Color3.fromRGB(104, 104, 104)
+            end
+        end
+        if callback then callback() end
+    end)
+
+    -- Info button functionality
+    local clicked = false
+    infoButton.MouseButton1Click:Connect(function()
+        clicked = not clicked
+        if clicked then
+            button.Text = desc
+            button.TextSize = 13
+        else
+            button.Text = name
+            button.TextSize = 17
+        end
+    end)
+
+
             function tab:NewButton(name, desc, callback)
                 local button = Instance.new("TextButton")
                 local butcorner = Instance.new("UICorner")
