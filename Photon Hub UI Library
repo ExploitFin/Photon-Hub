@@ -462,7 +462,7 @@ function module:New(name)
                 end)
             end
         	
-        	local function createAnimationButton(name, animationIds)
+        	local function tab:createAnimationButton(name, animationIds)
     -- Define the parent directly here
     
     local button = Instance.new("TextButton")
